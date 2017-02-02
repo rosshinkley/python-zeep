@@ -7,9 +7,9 @@ from six.moves.urllib.parse import urljoin, urlparse
 from zeep.exceptions import XMLSyntaxError
 
 
-def parse_xml(content, base_url=None, recover=False):
-    parser = etree.XMLParser(
-        remove_comments=True, recover=recover, resolve_entities=False)
+def parse_xml(content, base_url=None, recover=False, xml_huge_tree=False):
+    parser = etree.XMLParser(remove_comments=True, recover=recover,
+                             resolve_entities=False, huge_tree=xml_huge_tree)
     try:
         return fromstring(content, parser=parser, base_url=base_url)
     except etree.XMLSyntaxError as exc:

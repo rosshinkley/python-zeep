@@ -145,7 +145,7 @@ class SoapBinding(Binding):
             message_pack = None
 
         try:
-            doc = parse_xml(content)
+            doc = parse_xml(content, xml_huge_tree=client.xml_huge_tree)
         except XMLSyntaxError:
             raise TransportError(
                 u'Server returned HTTP status %d (%s)'
